@@ -67,9 +67,9 @@ d3.csv("assets/data/data.csv").then(function (data) {
         .append('circle')
         .attr("cx", d => xscale(d.poverty))
         .attr("cy", d => yscale(d.healthcare))
-        .attr("r", d => d.healthcare)
+        .attr("r", 10)
         .attr("fill", "pink")
-    // .attr("opacity", ".5")
+        .attr("opacity", 0.5)
     // .text(d => d.abbr).attr('fill', 'black')
 
 
@@ -79,7 +79,8 @@ d3.csv("assets/data/data.csv").then(function (data) {
         .append('text')
         .attr('x', d => xscale(d.poverty))
         .attr('y', d => yscale(d.healthcare))
-        .text(d => d.abbr).attr('fill', 'black')
+        .text(d => d.abbr).attr('fill', 'black').attr("text-anchor", "middle")
+
 
     // Step 6: Initialize tool tip
     // ==============================
@@ -87,7 +88,7 @@ d3.csv("assets/data/data.csv").then(function (data) {
         .attr('class', toolTip)
         .offset([80, -60])
         .html(function (d) {
-            return `${d.state}<br>hits${d.poverty}<br>hair lengths${d.healthcare}`;
+            return `${d.state}<br>${d.poverty}% poverty<br>${d.healthcare}% healthcare`;
         });
     chartGroup.call(toolTip)
     circlesGroup.on("mouseover", function (d) {
