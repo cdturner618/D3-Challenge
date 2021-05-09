@@ -68,18 +68,19 @@ d3.csv("assets/data/data.csv").then(function (data) {
         .attr("cx", d => xscale(d.poverty))
         .attr("cy", d => yscale(d.healthcare))
         .attr("r", 10)
-        .attr("fill", "pink")
+        .attr("fill", "lightblue")
         .attr("opacity", 0.5)
     // .text(d => d.abbr).attr('fill', 'black')
 
 
-    chartGroup.selectAll('text')
+    chartGroup.selectAll('circle-text')
         .data(data)
         .enter()
         .append('text')
         .attr('x', d => xscale(d.poverty))
         .attr('y', d => yscale(d.healthcare))
-        .text(d => d.abbr).attr('fill', 'black').attr("text-anchor", "middle")
+        .text(d => d.abbr).attr('fill', 'black')
+        .attr("text-anchor", "middle")
 
 
     // Step 6: Initialize tool tip
